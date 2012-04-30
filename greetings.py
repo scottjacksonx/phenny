@@ -5,7 +5,7 @@ from subprocess import call
 
 os.environ['TZ'] = "Australia/Brisbane"
 
-minimumTimeForHuToGreetYou = 10
+minimumTimeForHuToGreetYou = 5 * 60*60
 
 def greeting(phenny, input):
 	# check modification date of file 'lastupdated'

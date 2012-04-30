@@ -32,7 +32,7 @@ def setup(phenny):
 				if latestEpisodePublishedDate != podcast["latest_episode_date"]:
 					print "new episode found"
 					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
-					phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
+					phenny.msg(channel, "New episode of " + podcast["name"] + " available! scottjacksonx_no")
 			f = open("podcasts.json", "w")
 			f.write(json.dumps(podcasts))
 			f.close()

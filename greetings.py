@@ -17,8 +17,10 @@ def greeting(phenny, input):
 		return
 	if modificationDate < time.time() - minimumTimeForHuToGreetYou:
 		localTime = time.localtime()
-		if 7 <= localTime.time_hour <= 11:
+		if localTime.time_hour <= 12:
 			phenny.say("Good morning, " + input.nick + ". I trust you slept well.")
+		elif 13 <= localTime.time_hour <= 17:
+			phenny.say("Good afternoon, " + input.nick + ".")
 		elif 18 <= localTime.time_hour:
 			phenny.say("Good evening, " + input.nick + ". I hope you had a good day.")
 	call(["touch", "lastupdated"])

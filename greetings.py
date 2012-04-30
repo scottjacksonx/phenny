@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
-import os.path, time
+import os, time
 from subprocess import call
+
+os.environ['TZ'] = "Australia/Brisbane"
 
 def greeting(phenny, input):
 	# check modification date of file 'lastupdated'
@@ -11,8 +13,8 @@ def greeting(phenny, input):
 	except os.error:
 		call(["touch", "lastupdated"])
 		return
-	if modificationDate < time.time() - 10:
-		print time.ctime()
+	if modificationDate < time.gmtime() - 10:
+		print time.localtime()
 		phenny.say("it's been a while, " + input.nick)
 	call(["touch", "lastupdated"])
 	

@@ -29,9 +29,12 @@ def setup(phenny):
 
 				latestEpisodePublishedDate = soup.item.pubdate.string
 				if latestEpisodePublishedDate != podcast["latest_episode_date"]:
+					print "new episode found"
 					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
 					# say something in chat about it
 					phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
+				else:
+					print "no new episode found"
 			f = open("podcasts.json", "w")
 			f.write(json.dumps(podcasts))
 			f.close()

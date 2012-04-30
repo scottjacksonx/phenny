@@ -25,7 +25,9 @@ def setup(phenny):
 				xmlSource = urllib2.urlopen(podcast["feed_url"]).read()
 				soup = BeautifulSoup(xmlSource)
 
-				latestEpisodePublishedDate = soup.item.pubDate.string
+				latestEpisodePublishedDate = soup.item
+				print latestEpisodePublishedDate
+				latestEpisodePublishedDate = latestEpisodePublishedDate.pubDate.string
 				if latestEpisodePublishedDate != podcast["latest_episode_date"]:
 					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
 					# say something in chat about it

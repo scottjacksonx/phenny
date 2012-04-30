@@ -13,9 +13,10 @@ def greeting(phenny, input):
 	except os.error:
 		call(["touch", "lastupdated"])
 		return
-	if modificationDate < time.gmtime() - 10:
-		print time.localtime()
+	if modificationDate < time.time() - 10:
 		phenny.say("it's been a while, " + input.nick)
+	print time.ctime()
+	print time.time()
 	call(["touch", "lastupdated"])
 	
 greeting.rule = r'.*'

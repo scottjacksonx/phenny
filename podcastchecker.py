@@ -32,7 +32,7 @@ def setup(phenny):
 					# say something in chat about it
 					phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
 			f.write(json.dumps(podcasts))
-			time.sleep(10)
+			time.sleep(20)
 	targs = (phenny,)
 	t = threading.Thread(target=checkPodcasts, args=targs)
 	t.start()

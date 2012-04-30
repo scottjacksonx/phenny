@@ -36,7 +36,7 @@ def setup(phenny):
 					print "new episode found"
 					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
 					phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
-					prowl.post(description="New episode of " + podcast["name"] + " available!")
+					prowl.post(application="hu",event="Podcast",description="New episode of " + podcast["name"] + " available!")
 			f = open("podcasts.json", "w")
 			f.write(json.dumps(podcasts))
 			f.close()

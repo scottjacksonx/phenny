@@ -6,6 +6,7 @@ import threading
 
 def setup(phenny):
 	def checkPodcasts(phenny):
+		channel = open("channel", "r").readline().strip()
 		while True:
 			f = open("podcasts.json", "r+")
 			podcasts = json.loads(f.read())
@@ -29,7 +30,8 @@ def setup(phenny):
 				if latestEpisodePublishedDate != podcast["latest_episode_date"]:
 					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
 					# say something in chat about it
-					phenny.msg("scottjacksonssupersecretchannel", "New episode of " + podcast["name"] + " available!")
+					phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
+			f.write(json.dumps(podcasts))
 			time.sleep(10)
 	targs = (phenny,)
 	t = threading.Thread(target=checkPodcasts, args=targs)

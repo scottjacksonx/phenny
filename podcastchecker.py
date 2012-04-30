@@ -3,12 +3,15 @@ import urllib2
 from bs4 import BeautifulSoup
 import time
 import threading
+import prowlpy
 
 interval = 15 * 60
 
 def setup(phenny):
 	def checkPodcasts(phenny):
 		channel = open("channel", "r").readline().strip()
+		apikey = open("prowl_api_key", "r").readline().strip()
+		prowl = prowlpy.Prowl(apikey)
 		while True:
 			f = open("podcasts.json", "r")
 			podcasts = json.loads(f.read())
@@ -32,7 +35,8 @@ def setup(phenny):
 				if latestEpisodePublishedDate != podcast["latest_episode_date"]:
 					print "new episode found"
 					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
-					phenny.msg(channel, "New episode of " + podcast["name"] + " available! scottjacksonx_no")
+					phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
+					prowl.post(description="New episode of " + podcast["name"] + " available!")
 			f = open("podcasts.json", "w")
 			f.write(json.dumps(podcasts))
 			f.close()

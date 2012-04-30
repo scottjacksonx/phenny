@@ -29,7 +29,7 @@ def setup(phenny):
 				if latestEpisodePublishedDate != podcast["latest_episode_date"]:
 					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
 					# say something in chat about it
-					phenny.say("New episode of " + podcast["name"] + " available!")
+					phenny.msg("New episode of " + podcast["name"] + " available!")
 			time.sleep(10)
 	targs = (phenny,)
 	t = threading.Thread(target=checkPodcasts, args=targs)

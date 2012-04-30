@@ -14,3 +14,5 @@ def greeting(phenny, input):
 	if modificationDate < time.time() - 4*60*60:
 		phenny.say("it's been a while, " + input.nick)
 	call(["touch", "lastupdated"])
+	
+greeting.rule = r'.*'

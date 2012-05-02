@@ -2,6 +2,10 @@
 
 projectList = ["Pedal", "hu"]
 
+projectMap = {
+	"Pedal": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/Pedal.command"
+}
+
 def projects(phenny, input):
 	input = input[9:]
 	if input == "":
@@ -12,7 +16,7 @@ def projects(phenny, input):
 		phenny.say(s)
 	else:
 		if input in projectList:
-			phenny.say("http://file:///Users/scottjacksonx/git/" + input + "/")
+			phenny.say("http://file://" + projectMap[input])
 		else:
 			phenny.say("You don't have a project called " + input)
 			

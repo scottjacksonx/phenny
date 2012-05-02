@@ -4,7 +4,7 @@ projectList = ["Pedal", "hu"]
 
 projectMap = {
 	"Pedal": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/Pedal.command",
-	"hu": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/hu.command",
+	"hu": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/hu.command"
 }
 
 def projects(phenny, input):

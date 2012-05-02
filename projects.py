@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
-projectList = ["Pedal", "hu"]
+projectList = ["Pedal", "hu", "pedal-site"]
 
 projectMap = {
 	"Pedal": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/Pedal.command",
-	"hu": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/hu.command"
+	"hu": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/hu.command",
+	"pedal-site": "/Users/scottjacksonx/Dropbox/Scripts/AppleScript/Projects/pedal-site.command"
 }
 
 def projects(phenny, input):

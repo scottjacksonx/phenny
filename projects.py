@@ -3,6 +3,7 @@
 projectList = ["Pedal", "hu"]
 
 def projects(phenny, input):
+	input = input[9:]
 	if input == "":
 		# list the projects
 		s = "Which project would you like to open?\n"

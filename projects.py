@@ -10,9 +10,9 @@ def projects(phenny, input):
 	input = input[9:]
 	if input == "":
 		# list the projects
-		s = "Which project would you like to open?\n"
+		s = "Which project would you like to open? "
 		for p in projectList:
-			s = s + "\t- " + p + "\n"
+			s = s + "- " + p
 		phenny.say(s)
 	else:
 		if input in projectList:

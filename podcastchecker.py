@@ -59,7 +59,10 @@ def setup(phenny):
 			"""
 
 			for show in shows:
-				xmlSource = urllib2.urlopen(show["feed_url"]).read()
+				try:
+					xmlSource = urllib2.urlopen(show["feed_url"]).read()
+				except:
+					print show["feed_url"]
 				soup = BeautifulSoup(xmlSource)
 
 				latestEpisodePublishedDate = soup.item.pubdate.string

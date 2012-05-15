@@ -30,15 +30,19 @@ def setup(phenny):
 			"""
 
 			for podcast in podcasts:
-				xmlSource = urllib2.urlopen(podcast["feed_url"]).read()
-				soup = BeautifulSoup(xmlSource)
+				try:
+					xmlSource = urllib2.urlopen(podcast["feed_url"]).read()
+					soup = BeautifulSoup(xmlSource)
 
-				latestEpisodePublishedDate = soup.item.pubdate.string
-				if latestEpisodePublishedDate != podcast["latest_episode_date"]:
-					print "new episode found"
-					podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
-					phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
-					prowl.post(application="hu",event="Podcast",description="New episode of " + podcast["name"] + " available!")
+					latestEpisodePublishedDate = soup.item.pubdate.string
+					if latestEpisodePublishedDate != podcast["latest_episode_date"]:
+						print "new episode found"
+						podcasts[podcasts.index(podcast)]["latest_episode_date"] = latestEpisodePublishedDate
+						phenny.msg(channel, "New episode of " + podcast["name"] + " available!")
+						prowl.post(application="hu",event="Podcast",description="New episode of " + podcast["name"] + " available!")
+				except:
+					print "error getting episodes of " + podcast["feed_url"]
+					pass
 			f = open("podcasts.json", "w")
 			f.write(json.dumps(podcasts))
 			f.close()
@@ -61,16 +65,17 @@ def setup(phenny):
 			for show in shows:
 				try:
 					xmlSource = urllib2.urlopen(show["feed_url"]).read()
-				except:
-					print show["feed_url"]
-				soup = BeautifulSoup(xmlSource)
+					soup = BeautifulSoup(xmlSource)
 
-				latestEpisodePublishedDate = soup.item.pubdate.string
-				if latestEpisodePublishedDate != show["latest_episode_date"]:
-					print "new episode found"
-					shows[shows.index(show)]["latest_episode_date"] = latestEpisodePublishedDate
-					phenny.msg(channel, "New episode of " + show["name"] + " available!")
-					prowl.post(application="hu",event="TV Show",description="New episode of " + show["name"] + " available!")
+					latestEpisodePublishedDate = soup.item.pubdate.string
+					if latestEpisodePublishedDate != show["latest_episode_date"]:
+						print "new episode found"
+						shows[shows.index(show)]["latest_episode_date"] = latestEpisodePublishedDate
+						phenny.msg(channel, "New episode of " + show["name"] + " available!")
+						prowl.post(application="hu",event="TV Show",description="New episode of " + show["name"] + " available!")
+				except:
+					print "error getting episodes of " + show["feed_url"]
+					pass
 			f = open("tv.json", "w")
 			f.write(json.dumps(shows))
 			f.close()

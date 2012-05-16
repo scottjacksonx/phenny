@@ -14,7 +14,6 @@ def setup(phenny):
 		
 		atts = ["id", "name", "lat", "lng", "bikes", "free", "timestamp"]
 		for att in atts:
-			logging.info("replacing: " + att)
 			stationsString = stationsString.replace(att+":", "\"" + att + "\":")
 			
 		stations = json.loads(stationsString)

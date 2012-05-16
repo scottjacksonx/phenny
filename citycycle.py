@@ -27,7 +27,7 @@ def setup(phenny):
 		
 		conn = sqlite3.connect("citycycle.db")
 		c = conn.cursor()
-		c.execute("insert into cycles VALUES (?,?", (int(time.time()), json.dumps(stations)))
+		c.execute("insert into cycles VALUES (?,?)", (int(time.time()), json.dumps(stations)))
 		conn.commit()
 		c.close()
 		time.sleep(interval)
